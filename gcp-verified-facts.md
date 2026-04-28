@@ -45,7 +45,7 @@ license: "Apache-2.0; this file is the truth ledger for cookbook-published claim
 
 The cookbook documents Sugukuru's fleet as: **"three MCP servers (`sugukuru-core`, `sugukuru-finance`, `sugukuru-crm`), one supporting REST API (`sugukuru-hub`), and one webhook receiver (`sugukuru-comms`) whose MCP migration is planned but not yet implemented."**
 
-The cookbook MUST NOT describe the fleet as "four MCP servers" — that would aggregate `sugukuru-comms` into the MCP count incorrectly. The cookbook MAY describe the fleet as "three production MCP servers plus supporting services" for brevity.
+The cookbook MUST NOT describe the fleet as "four MCP servers" — that would aggregate `sugukuru-comms` into the MCP count incorrectly. The cookbook MAY describe the fleet as "three live MCP servers plus supporting services" for brevity.
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Memo Errata — Project Memos vs Verified Reality"
 status: living
-version: 0.2.0
+version: 0.4.0
 last_reviewed: 2026-04-28
 maintainer: "@sugukurukabe"
 license: "Apache-2.0"
@@ -275,17 +275,45 @@ The operator's strategic communications use 150+ (the meaningful business metric
 
 ---
 
-### 12. The pre-publication scout component (2026-04-28, RESOLVED before initial publication)
+## 11. The "production" terminology ambiguity (2026-04-28, RESOLVED before initial publication)
+
+### 11.1 The ambiguous term
+
+Pre-publication drafts of multiple cookbook chapters used `production` to describe Sugukuru's MCP fleet. The deploying organization is a small operator running its own internal business operations — not selling the MCP fleet as an external product. The English word `production` does not distinguish between "running real business operations on real data" and "sold as a product to external customers"; both readings are colloquially valid.
+
+### 11.2 Why this matters for the cookbook
+
+The cookbook's audience includes prospective partners and investors who would interpret `production` differently than the case study author intended. A reader assuming the "external product" reading would over-estimate the deploying organization's commercial maturity.
+
+### 11.3 The verified intent
+
+Sugukuru runs the MCP fleet for its own real business operations, not as an external product. Active operational load (150+ workers under live case management, 74,789 7-day request volume on Supabase, real freee + GMO Bank integrations executing real money movements) qualifies as live deployment in every meaningful technical sense. The deployment does not, however, qualify as an "external product" because Sugukuru does not offer the MCP fleet for purchase.
+
+### 11.4 Lasting correction
+
+- Cookbook prose now uses `live operation` / `live deployment` throughout when describing the deployment's status.
+- `production` is retained only when it refers to a cloud-platform environment tier (e.g., "Cloud Run production traffic"), where it is a technical adjective and the ambiguity does not arise.
+- `cookbook-strategy-principles.md` §2.4 codifies the distinction as a [MUST] rule.
+- `README.md` "What this is" section explicitly notes the cookbook's "live" usage.
+- Case Study #01's lead clarifies that the deployment is internal-only.
+
+### 11.5 How the ambiguity entered
+
+A pre-publication Claude session adopted `production` as the default term, following industry convention without distinguishing between the "external product" usage and the "internal live operations" usage. The operator caught the ambiguity during pre-publication review of bundle text. The correction was applied before initial publication; readers of the cookbook never saw the ambiguous version.
+
+---
+
+## 12. The pre-publication scout component (2026-04-28, RESOLVED before initial publication)
 
 ### 12.1 The premature inclusion
 
 Pre-publication drafts included `tools/cookbook-scout/`, `docs/scout/SPEC.md`, `docs/scout/INTEGRATION.md`, and `scripts/cookbook-candidate-detector.sh` as cookbook contents, with corresponding references in `README.md`, `cookbook-strategy-principles.md` §9, `docs/patterns/INDEX.md`, and `OPERATIONS.md`.
 
-The `mcp-cookbook-scout` MCP server existed only as a design specification — no implementation, no deployment, no production traffic, no recorded usage. The bash hook (`cookbook-candidate-detector.sh`) had been authored but had never been installed in any repository or scored any commit.
+The `mcp-cookbook-scout` MCP server existed only as a design specification — no implementation, no deployment, no live traffic, no recorded usage. The bash hook (`cookbook-candidate-detector.sh`) had been authored but had never been installed in any repository or scored any commit.
 
 ### 12.2 The principle violated
 
-`cookbook-strategy-principles.md` §2.1 requires that cookbook contents be grounded in at least one production deployment. The scout substrate violated this directly. While §2.1's letter applies to patterns and case studies, the cookbook's broader honesty principle (§3.1) extends to all advertised contents — a `## Tools` section in `README.md` advertising vaporware would have given readers a false impression of the cookbook's substance.
+`cookbook-strategy-principles.md` §2.1 requires that cookbook contents be grounded in at least one live deployment. The scout substrate violated this directly. While §2.1's letter applies to patterns and case studies, the cookbook's broader honesty principle (§3.1) extends to all advertised contents — a `## Tools` section in `README.md` advertising vaporware would have given readers a false impression of the cookbook's substance.
 
 This is also a direct application of Lesson 6 from this errata file: "Cookbook honesty produces stronger chapters than fabricated cleanliness." Removing the unimplemented scout is the honesty-over-polish move.
 
@@ -296,9 +324,8 @@ This is also a direct application of Lesson 6 from this errata file: "Cookbook h
 - `docs/scout/INTEGRATION.md` (276-line integration plan)
 - `scripts/cookbook-candidate-detector.sh` (244-line bash hook implementation, never installed)
 - "Tools" section in `README.md`
-- §9 in `cookbook-strategy-principles.md` (later sections renumbered)
+- §9 in `cookbook-strategy-principles.md` (later sections renumbered to §9, §10, §11)
 - "Cookbook Self-Observation" entry in `docs/patterns/INDEX.md` proposed-patterns list
-- Any scout references in `OPERATIONS.md`
 
 ### 12.4 Future reintroduction
 
@@ -309,21 +336,21 @@ The scout concept is sound and the design specification has value. Both will ret
 - The scout has run long enough to have actually surfaced cookbook-contribution candidates from real development activity.
 - The deployment qualifies as a "live deployment" per `cookbook-strategy-principles.md` §2.4 and merits a case study.
 
-When these conditions are met, the scout will reenter the cookbook with its own case study, real production-grounding metrics, and accurate description of what it is rather than what it is intended to be. The renumbered §9 in the strategy principles file will be revisited at that time.
+When these conditions are met, the scout will reenter the cookbook with its own case study, real live-deployment metrics, and accurate description of what it is rather than what it is intended to be.
 
 ### 12.5 How the premature inclusion happened
 
-The pre-publication Claude session that drafted the cookbook's initial structure recognized scout as a strategically valuable differentiator (a self-observation MCP server is rare among cookbooks) and prioritized including it in the v0.1.0 launch. The session weighed strategic positioning against the production-grounding rule and resolved the trade-off by including the design without flagging that "design only" should not appear in a published cookbook claiming to document what operators run.
+The pre-publication Claude session that drafted the cookbook's initial structure recognized scout as a strategically valuable differentiator (a self-observation MCP server is rare among cookbooks) and prioritized including it in the v0.1.0 launch. The session weighed strategic positioning against the live-deployment-grounding rule and resolved the trade-off by including the design without flagging that "design only" should not appear in a published cookbook claiming to document what operators run.
 
 The operator caught this in pre-publication review, asking "but we haven't built or run this — what is it?" The strategic answer (it would be valuable for differentiation) did not survive contact with the cookbook's own honesty rules.
 
-This is the cookbook's own §3.1 (honesty over polish) and §2.1 (production grounding) being applied to itself, in front of any external reader. The cookbook benefits from this incident as direct evidence that it follows its own rules.
+This is the cookbook's own §3.1 (honesty over polish) and §2.1 (live-deployment grounding) being applied to itself, in front of any external reader. The cookbook benefits from this incident as direct evidence that it follows its own rules.
 
 ---
 
-# Cookbook lessons across entries
+## Cookbook lessons across entries
 
-The ten entries above share recurring failure modes. Recording them here for the project's benefit.
+The twelve entries above share recurring failure modes. Recording them here for the project's benefit.
 
 ### Lesson 1: Plausible-sounding numbers are the most dangerous claims
 
@@ -361,11 +388,18 @@ In every entry where the false claim was replaced with the verified truth, the r
 
 This is a useful prior for future drafting: when in doubt about whether to fabricate a confident claim or admit absence, admit. The corrected chapter tends to be better.
 
+### Lesson 7: The cookbook applies its own rules to itself
+
+Entries §11 (production terminology) and §12 (scout removal) are different from §1–§10 in one important way: they were caught and resolved **before** initial publication, by the operator applying the cookbook's own published rules to the cookbook's own draft contents. §11 enforced `cookbook-strategy-principles.md` §3.2 (specificity over generality) against ambiguous terminology. §12 enforced §2.1 (live-deployment grounding) against vaporware components.
+
+The procedural counter-measure for both was the same: the operator read what the cookbook claimed to be, compared it to what was being shipped, and refused to ship the gap. The cookbook's standards work as standards only when someone actually applies them, including against material the cookbook is itself producing.
+
+Future Claude sessions, future contributors, and future maintainers SHOULD apply the same scrutiny to cookbook drafts as they would to any third-party submission. The cookbook's editorial principles do not exempt their authors.
+
 ---
 
 ## Changelog
 
-- **0.4.0** (2026-04-28) — Added §12 (pre-publication scout component, removed before initial publication). Combined with §11's production-terminology resolution into a single pre-publication cleanup commit.
-- **0.3.0** (2026-04-28) — Added §11 (production terminology ambiguity, resolved before initial publication).
+- **0.4.0** (2026-04-28) — Added §11 (production terminology ambiguity) and §12 (pre-publication scout component) to record corrections that were applied to the v0.1.0 integration commit but had not been documented in this errata file at that time. Added Lesson 7 (the cookbook applies its own rules to itself). Skipped 0.3.0 to mark this as a meaningful catch-up; the entries were always supposed to be there.
 - **0.2.0** (2026-04-28) — Added §7 (runtime resolution: Python/FastMCP), §8 (`sugukuru-comms` is webhook, not MCP), §9 (Japanese files removal), §10 (active-worker count reconciliation). Cross-entry lessons updated: added Lesson 3 (cross-project conflation), Lesson 4 (future→present tense drift), Lesson 5 (coordination gaps).
 - **0.1.0** (2026-04-28) — Initial publication. Records six errata entries spanning the 2026-04-27/28 window of cookbook drafting and reconciliation.
