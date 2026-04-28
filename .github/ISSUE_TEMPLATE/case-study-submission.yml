@@ -1,0 +1,90 @@
+name: Case Study Submission
+description: Propose a new case study for the cookbook
+title: "[Case Study] "
+labels:
+  - case-study
+  - needs-discussion
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for offering a case study. Please answer the questions below.
+
+        Before submitting, please skim:
+        - [`cookbook-strategy-principles.md`](../../cookbook-strategy-principles.md) §5.2 (attribution levels)
+        - [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
+
+  - type: dropdown
+    id: attribution
+    attributes:
+      label: Attribution level
+      description: How will the deploying organization be identified in the case study?
+      options:
+        - "attributed (organization named)"
+        - "industry-attributed (industry and scale named, organization not)"
+        - "anonymized (only technical and regulatory shape)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: deployment_summary
+    attributes:
+      label: Deployment summary
+      description: One paragraph. What does this deployment do? Where? How long has it been in production?
+    validations:
+      required: true
+
+  - type: textarea
+    id: regulated_context
+    attributes:
+      label: Regulated context
+      description: What laws, regulations, or compliance regimes shape the deployment? E.g., "GDPR + medical device regulation", "Worker Dispatch Law + APPI", "FedRAMP Moderate".
+    validations:
+      required: true
+
+  - type: textarea
+    id: technical_shape
+    attributes:
+      label: Technical shape
+      description: Platform, runtime, MCP transport, scaling configuration, session model, multi-tenancy posture, integrations. What chapter readers would need to know to evaluate whether their situation is similar.
+    validations:
+      required: true
+
+  - type: textarea
+    id: patterns_validated
+    attributes:
+      label: Patterns this case study validates (or motivates)
+      description: Which existing cookbook patterns does this deployment use? If the case study would also motivate a new pattern, name it.
+      placeholder: "Validates Pattern 01 (Cloud Run Multi-Instance Session Continuity), Pattern 04 (Multi-tenant). Motivates a new pattern about [topic]."
+    validations:
+      required: false
+
+  - type: textarea
+    id: surprises
+    attributes:
+      label: What surprised you / what did you get wrong
+      description: This is the section readers will care most about. Specific moments where production behavior diverged from your expectation, or where prior writing turned out to be incorrect when reconciled with reality. Optional but strongly encouraged.
+    validations:
+      required: false
+
+  - type: textarea
+    id: unsolved
+    attributes:
+      label: What you have not solved
+      description: Open problems in your deployment. Per cookbook editorial principles, naming what is unsolved is part of the case study's value.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: agreements
+    attributes:
+      label: Confirmations
+      options:
+        - label: I am operating, or have operated, the deployment described — this is not hypothetical.
+          required: true
+        - label: I have read [`cookbook-strategy-principles.md`](../../cookbook-strategy-principles.md) and the attribution-level definitions.
+          required: true
+        - label: I am willing to participate in review and respond to fact-verification questions.
+          required: true
+        - label: I understand that the cookbook does not promise to publish every submitted case study, but does promise honest reasons when not.
+          required: true

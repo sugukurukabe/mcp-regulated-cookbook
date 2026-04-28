@@ -39,21 +39,21 @@ You are likely **not** in scope if:
 
 ## Forces
 
-- **Cost vs session continuity.** `min-instances: 0` is the cheapest configuration but adds cold-start latency (5–10s observed in production). `min-instances: 1` eliminates cold starts but costs ~$15-30/month per service.
+- **Cost vs session continuity.** `min-instances: 0` is the cheapest configuration but adds cold-start latency (5–10s observed in live operation). `min-instances: 1` eliminates cold starts but costs ~$15-30/month per service.
 - **Cloud Run-native session affinity.** Cloud Run supports cookie-based session affinity (`--session-affinity`) that pins a session's traffic to the same instance.
 - **External session store cost vs latency.** Adding Redis for session storage adds 1–5 ms latency and a new failure domain.
 - **Service criticality asymmetry.** Not all MCP servers in a fleet have the same availability requirements.
 
 ## Solution
 
-**The recommendation.** Use Cloud Run-native sticky sessions (`--session-affinity`) combined with a **per-service scaling strategy**: set `min-instances: 1` for your most critical MCP server (the one users connect to first and most frequently), and `min-instances: 0` for secondary services. This hybrid approach, verified in production at Sugukuru Inc., balances cost against cold-start user experience without any external session store.
+**The recommendation.** Use Cloud Run-native sticky sessions (`--session-affinity`) combined with a **per-service scaling strategy**: set `min-instances: 1` for your most critical MCP server (the one users connect to first and most frequently), and `min-instances: 0` for secondary services. This hybrid approach, verified in live operation at Sugukuru Inc., balances cost against cold-start user experience without any external session store.
 
 ### Path A: Warm baseline for critical services
 
 For the primary MCP server that handles the majority of user sessions:
 
 ```
-Verified in production (GCP Console, 2026-04-28):
+Verified in live operation (GCP Console, 2026-04-28):
   sugukuru-core → Min: 1, Max: 20, session-affinity: true
 ```
 
@@ -81,19 +81,19 @@ This eliminates cold-start latency for the first user request. The session affin
 For MCP servers that are called less frequently or where occasional cold-start latency is acceptable:
 
 ```
-Verified in production (GCP Console, 2026-04-28):
+Verified in live operation (GCP Console, 2026-04-28):
   sugukuru-finance → Min: 0, Max: 20, session-affinity: true
   sugukuru-crm     → Min: 0, Max: 20, session-affinity: true
 ```
 
-These services scale to zero when idle. The first request triggers a cold start (p50: ~5s, p99: up to 10s, as observed in production metrics). The session affinity cookie then pins the session to the newly created instance.
+These services scale to zero when idle. The first request triggers a cold start (p50: ~5s, p99: up to 10s, as observed in operational metrics). The session affinity cookie then pins the session to the newly created instance.
 
 **When to choose Path B:**
 - The service is called infrequently or as a secondary service in an agent workflow.
 - Cold-start latency of 5–10 seconds is tolerable.
 - You want zero idle cost.
 
-### The initial deploy script vs production reality
+### The initial deploy script vs operational reality
 
 The initial deployment script (`deploy-mcp-split.sh`) sets `--min-instances=0 --max-instances=10` for all services:
 

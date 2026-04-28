@@ -1,0 +1,94 @@
+name: Pattern Proposal
+description: Propose a new pattern for the cookbook
+title: "[Pattern Proposal] "
+labels:
+  - pattern-proposal
+  - needs-discussion
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for proposing a pattern. Please answer the questions below as concretely as possible. Vague proposals are harder to advance through review.
+
+        Before submitting, please skim:
+        - [`cookbook-strategy-principles.md`](../../cookbook-strategy-principles.md) §2 (scope)
+        - [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What recurring problem does this pattern address? Be specific. "MCP session continuity" is too broad; "session id mismatch errors after Cloud Run scales out under load" is the right granularity.
+      placeholder: When operators do X in environment Y, they hit failure mode Z.
+    validations:
+      required: true
+
+  - type: textarea
+    id: spec_reference
+    attributes:
+      label: Relevant MCP spec section
+      description: Cite the section(s) of the MCP specification (2025-11-25) that the pattern interacts with. URLs preferred. Write "no spec section directly applies" if the pattern is purely platform-side.
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_solution
+    attributes:
+      label: Your current solution
+      description: How are you handling this today in your production deployment? This is the seed of the pattern. Include configuration values, code excerpts, or YAML — whatever makes the solution concrete.
+    validations:
+      required: true
+
+  - type: textarea
+    id: deployment_evidence
+    attributes:
+      label: Deployment evidence
+      description: Where is this pattern in production? Organization (or industry/scale if anonymized), platform, runtime, time in production, observed scale. Per cookbook policy, every published pattern must be backed by at least one production deployment.
+    validations:
+      required: true
+
+  - type: textarea
+    id: when_it_fails
+    attributes:
+      label: When does this pattern fail?
+      description: Describe at least one failure mode where this pattern is the wrong answer, or where it stops working as scale or context changes. This is required for publishable patterns; if you cannot answer this, the proposal is not yet ready.
+    validations:
+      required: true
+
+  - type: textarea
+    id: corroborating_links
+    attributes:
+      label: Corroborating links
+      description: SDK issues, blog posts, prior conference talks, related MCP discussions, anything that supports the proposal. Optional but helpful for reviewers.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: domains
+    attributes:
+      label: Regulated domains this pattern applies to
+      description: Select all that apply.
+      multiple: true
+      options:
+        - immigration
+        - healthcare
+        - finance
+        - labor
+        - agriculture
+        - public-sector
+        - education
+        - other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: agreements
+    attributes:
+      label: Confirmations
+      options:
+        - label: I have read [`cookbook-strategy-principles.md`](../../cookbook-strategy-principles.md) and believe this proposal is in scope.
+          required: true
+        - label: I am operating, or have operated, the deployment described in "Deployment evidence" — this is not a hypothetical.
+          required: true
+        - label: I am willing to participate in review of the resulting pattern chapter.
+          required: true

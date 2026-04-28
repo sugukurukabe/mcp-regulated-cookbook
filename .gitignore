@@ -1,0 +1,55 @@
+# Internal-only working files (see cookbook-strategy-internal.md distribution rule)
+internal/
+*.internal.md
+
+# Cookbook scout local candidate store (gitignored per scout/SPEC.md §5.2)
+.cookbook-candidates/
+.cookbook-scout.env
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Node / TypeScript build artifacts (under tools/cookbook-scout/ when implementation begins)
+node_modules/
+dist/
+build/
+*.tsbuildinfo
+.turbo/
+.next/
+.cache/
+
+# Python build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+venv/
+.venv/
+
+# Lockfile noise — keep package.json / pyproject.toml, exclude lock backups
+*.lock.bak
+
+# Local environment / secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Test outputs
+coverage/
+.nyc_output/
+htmlcov/
+
+# Local notebook scratch
+*.ipynb_checkpoints/
+scratch/

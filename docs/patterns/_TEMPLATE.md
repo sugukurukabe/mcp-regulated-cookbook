@@ -1,65 +1,82 @@
 ---
 title: "Pattern Title in Active Voice"
-status: draft       # draft | stable | deprecated
+status: draft
 version: 0.1.0
-last_reviewed: 2026-04-27
+last_reviewed: YYYY-MM-DD
 spec_version: "2025-11-25"
-domains:            # at least one of: immigration, healthcare, finance, labor, agriculture, education, public-sector, other
+domains:
+  - immigration
+  - healthcare
+  - finance
+  - labor
+  - agriculture
+  - public-sector
   - other
-platforms_tested:   # platforms where this pattern has been verified in production
-  - placeholder
+platforms_tested:
+  - "Platform name and version"
 contributors:
-  - "@github-handle (Affiliation, role)"
+  - "@your-handle (Your Org, Your Role) — primary deployment"
 ---
 
-# Pattern: {{ Pattern Title }}
+# Pattern NN: Pattern Title
 
-> **One-sentence summary.** What problem does this pattern solve, in twenty words or fewer?
+> **One-sentence summary.** Pattern statement in twenty words or fewer, in italics, telling the reader what the pattern does.
 
 ## When to use this pattern
 
 You are likely in scope if:
-
-- A specific, observable condition.
-- Another specific, observable condition.
+- (Concrete characteristic 1)
+- (Concrete characteristic 2)
 
 You are likely **not** in scope if:
-
-- A condition that points to a different pattern.
-- A condition that means the problem does not actually apply to you.
+- (Concrete exclusion 1)
 
 ## Forces
 
-What is in tension. List 3–6 forces; each should be one sentence.
+- **Force name.** Description of the tension that motivates the pattern.
+- **Force name.** Another tension.
+- (3–6 forces total.)
 
 ## Solution
 
-The actual recommendation. This is the longest section.
+**The recommendation in one paragraph.** Tell the reader what to do, with enough specificity that they can recognize their situation.
+
+### Concrete configuration
+
+(Configuration block, code, or diagram showing the solution applied.)
+
+### When this works
+
+Conditions under which this configuration is the right answer.
+
+### When this stops working
+
+Specific signals that the pattern is reaching its limits. (This material can be elaborated in the "When this pattern fails" section below.)
 
 ## Trade-offs
 
-What you give up by adopting this pattern.
-- **Operational cost**
-- **Performance cost**
-- **Complexity cost**
-- **Lock-in**
+- **Trade-off name.** What is gained vs what is given up.
+- (Two to four trade-offs.)
 
 ## When this pattern fails
 
-Concrete failure modes. The goal is that a reader who is about to deploy this pattern can do a final sanity check against this list.
+(Required section.)
+
+- **Failure mode name.** Specific scenario in which the pattern produces wrong outcomes, with the signal that indicates the failure mode is occurring and a mitigation if available.
+- (At least one failure mode; ideally two to four.)
 
 ## Real deployments
 
-At least one. Each entry links to a case study or names the deployment with the contributor's permission.
+- (Cite at least one live deployment, with operator participation in review.)
 
 ## Related patterns
 
-- [Pattern NN: Title]({{ link }}) — relationship described in one sentence.
+- Patterns this pattern complements, conflicts with, or supersedes.
 
 ## References
 
-- MCP Specification
-- Other sources
+- MCP Specification, [section name](https://modelcontextprotocol.io/specification/...) — for spec citations.
+- (SDK issues, blog posts, prior writing — with date of access for unstable resources.)
 
 ## Changelog
 

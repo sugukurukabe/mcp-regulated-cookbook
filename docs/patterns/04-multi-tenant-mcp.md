@@ -102,7 +102,7 @@ CREATE POLICY "staff_tenant" ON staff FOR ALL TO authenticated
 
 ## Real deployments
 
-- [**Case Study 01: Sugukuru Inc.**](../case-studies/01-sugukuru.md) — Over 100 MCP tools (115 unique tool definitions verified in the `aios` Python codebase) operating across organizations including `sugukuru`, `ja-kimotsuki`, and `win-international`. The codebase securely separates foreign workers' PII, visa statuses, and financial records across 62 tenant-isolated database tables entirely through this `ContextVar` + automatic `org_id` injection + RLS combination.
+- [**Case Study 01: Sugukuru Inc.**](../case-studies/01-sugukuru.md) — Over 100 MCP tools (115 unique tool definitions verified in the `aios` Python codebase) operating across organizations including `sugukuru`, `ja-kimotsuki`, and `win-international` (active production tenants—meaning live internal operational boundaries using real data, not external SaaS customers—verified via Supabase `organizations` table screenshot). The codebase securely separates foreign workers' PII, visa statuses, and financial records across 62 tenant-isolated database tables entirely through this `ContextVar` + automatic `org_id` injection + RLS combination.
 
 ## Changelog
 
