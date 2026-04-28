@@ -1,7 +1,7 @@
 ---
 title: "GCP Verified Facts — Sugukuru Inc. MCP Fleet"
 status: living
-version: 0.3.0
+version: 0.4.0
 last_reviewed: 2026-04-28
 maintainer: "@sugukurukabe"
 verification_window: "Cloud Run console snapshot 2026-04-28; GCP Billing April 2026 MTD through 2026-04-26"
@@ -17,6 +17,22 @@ license: "Apache-2.0; this file is the truth ledger for cookbook-published claim
 > **Out of scope.** This file documents the `sugukuru` GCP project only. Sugukuru's `suguvisa-mcp` (a separate TypeScript MCP server in a separate GCP project, anticipated to be split into a separate company in mid-2026) is intentionally not documented here. It will become Case Study #02 at the appropriate time.
 
 ---
+
+## 1.0 Project identification
+
+The Sugukuru MCP fleet is deployed in a single GCP project:
+
+| Field | Value |
+|---|---|
+| GCP Project ID | `sugukurucorpsite` |
+| GCP Project Display Name | Sugukuru |
+| Organization | sugu-kuru.co.jp |
+| Primary Region | asia-northeast1 |
+| Deployment first verified | 2026-03-22 (`sugukuru-core` initial Cloud Run revision) |
+
+This project ID is published explicitly because the Operator Experience section in Case Study #01 cites GCP API surface metrics (Google Drive, Cloud Build, Document AI, etc.) that are scoped to this project. Readers verifying the cookbook's claims against gcloud or GCP Console outputs need to know which project to query. The project ID is not a credential; access controls live in IAM, not in the project ID.
+
+The operator's separate `suguvisa-mcp` project lives in a different GCP project (out of scope for this case study; see project README) and uses a separate set of metrics.
 
 ## 1. MCP fleet composition
 
@@ -324,6 +340,8 @@ Per `OPERATIONS.md` D.1, this file MUST be updated when:
 Per OPERATIONS.md D.3, sample at minimum 5 facts per quarter and re-verify against current GCP state. Next due: 2026-07-28.
 
 ## 11. Changelog
+
+- **0.4.0** (2026-04-28): added §1.0 explicit GCP project identification (`sugukurucorpsite`); cross-referenced from new Operator Experience section in Case Study #01 and from memo-errata §13.4
 
 - **0.3.0** (2026-04-28) — Major reconciliation against Antigravity-validated codebase inspection. Resolved all `[PENDING]` items from v0.2.0: runtime confirmed as Python 3.12 + FastMCP across all three MCP servers; `sugukuru-comms` confirmed as Express webhook (not an MCP server), with future MCP migration noted. Added §3 (codebase) introducing the `aios` monorepo naming convention. Added §5 (Supabase) with operational metrics and multi-tenancy posture. Added §6 cost framings. Tool count corrected from 117 (earlier draft) to 115 per re-verification.
 - **0.2.0** (2026-04-28) — Reconciliation against Antigravity v0.3.1 of Pattern 01. Pre-codebase-inspection state.
