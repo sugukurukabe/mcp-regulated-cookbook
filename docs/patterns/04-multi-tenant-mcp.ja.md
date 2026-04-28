@@ -102,7 +102,7 @@ CREATE POLICY "staff_tenant" ON staff FOR ALL TO authenticated
 
 ## 本番環境での採用実績
 
-- [**Case Study 01: スグクル株式会社**](../case-studies/01-sugukuru.ja.md) — `sugukuru`, `ja-kimotsuki`, `win-international` などの組織をまたいで稼働する100以上のMCPツール（`aios` Pythonコードベースにて117のユニークなツール定義を検証済み）。コードベースは、この `ContextVar` + 自動 `org_id` 注入 + RLS の組み合わせを通じて、62のテナント分離テーブルにわたり、外国人労働者の個人情報（PII）、ビザのステータス、財務記録を完全に分離・保護しています。
+- [**Case Study 01: スグクル株式会社**](../case-studies/01-sugukuru.ja.md) — `sugukuru`, `ja-kimotsuki`, `win-international` などの組織をまたいで稼働する100以上のMCPツール（`aios` Pythonコードベースにて115のユニークなツール定義を検証済み）。コードベースは、この `ContextVar` + 自動 `org_id` 注入 + RLS の組み合わせを通じて、62のテナント分離テーブルにわたり、外国人労働者の個人情報（PII）、ビザのステータス、財務記録を完全に分離・保護しています。
 
 ## 変更履歴
 

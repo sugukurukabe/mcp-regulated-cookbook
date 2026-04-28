@@ -85,7 +85,7 @@ All MCP servers connect to a single **Supabase** instance (`sugukuru_ai_os`, MIC
 
 > **Evidence source:** Supabase Dashboard screenshot, captured 2026-04-28.
 
-Notable: The entire MCP fleet — 117 tools, 400+ worker records, multi-tenant RLS isolation — runs on a **$25/month Supabase Micro instance** with CPU at 1% and RAM at 50%. This is strong evidence that production-grade regulated MCP operations do not require expensive infrastructure.
+Notable: The entire MCP fleet — 115 tools, 400+ worker records, multi-tenant RLS isolation — runs on a **$25/month Supabase Micro instance** with CPU at 1% and RAM at 50%. This is strong evidence that production-grade regulated MCP operations do not require expensive infrastructure.
 
 ## Total monthly cost
 
@@ -98,7 +98,7 @@ Notable: The entire MCP fleet — 117 tools, 400+ worker records, multi-tenant R
 
 > **Evidence source:** GCP Billing Reports (April 1–26, 2026). Cloud Run costs include `sugukuru-core` (Min: 1 warm instance), `sugukuru-finance`, `sugukuru-crm` (both Min: 0), `sugukuru-hub`, and `sugukuru-comms`.
 
-For a platform managing 400+ foreign workers' PII, visa statuses, and financial records with 117 MCP tools and multi-tenant isolation, a total infrastructure cost under $200/month demonstrates that enterprise-grade MCP deployments are economically accessible.
+For a platform managing 400+ foreign workers' PII, visa statuses, and financial records with 115 MCP tools and multi-tenant isolation, a total infrastructure cost under $200/month demonstrates that enterprise-grade MCP deployments are economically accessible.
 
 ## CI/CD pipeline
 
